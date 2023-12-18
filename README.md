@@ -25,7 +25,7 @@ fn cool_num(n: u32) i32 {
 
 ---
 
-### Zaphyr && Iqni
+### Zaphyr & Iqni
 ```zig
 @use zaphyr::*;
 @use iqni::*;
@@ -38,6 +38,6 @@ pub fn entry () !void{
 
 @get("/")
 async fn echo(msg: str) !str{
-    
+    => msg
 }
 ```
