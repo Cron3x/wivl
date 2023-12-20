@@ -1,0 +1,8 @@
+pub fn entry() !void {
+    let num: i32 = cool_num(5);
+    printf("Hello World {num:d}");
+}
+
+fn cool_num(n: u32) i32 {
+    => (n * 2 + 1) as i32
+}

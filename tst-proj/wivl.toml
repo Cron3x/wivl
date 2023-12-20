@@ -1,0 +1,11 @@
+[project]
+name="tst-proj"
+version="0.0.1"
+authors=["Cron3x"]
+main="wivl-tst"
+
+[bin]
+name="wivl-tst"
+path="./entry.wvl"
+
+[dependencies]
