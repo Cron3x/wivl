@@ -15,7 +15,9 @@ How does it look
 
 ```zig
 pub fn entry() !void {
-    let num: i32 = cool_num(5);
+    const n: i32 = 5;
+    let num: i32 = 3;
+    num += cool_num(n);
     printf("Hello World {num:d}");
 }
 
