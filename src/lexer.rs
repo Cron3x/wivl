@@ -5,8 +5,8 @@ static KEY_WORDS: phf::Map<&'static str, TokenKind> = phf_map! {
     "fn"    => TokenKind::Fn
 };
 
-#[derive(Copy, Clone, Debug)]
-enum TokenKind {
+#[derive(Copy, Clone, Debug, PartialEq)]
+pub(crate) enum TokenKind {
     EOF = 0,
     Number,
     Identifier,
@@ -27,8 +27,8 @@ struct Loc{
 }
 #[derive(Debug)]
 pub(crate) struct Token{
-    kind: TokenKind,
-    value: String,
+    pub kind: TokenKind,
+    pub value: String,
 }
 impl Token {
     fn new(kind: &TokenKind, value: String) -> Token{
@@ -36,7 +36,7 @@ impl Token {
     }
 }
 
-pub fn tokenize(source: String) -> Vec<Token>{
+pub(crate) fn tokenize(source: String) -> Vec<Token>{
     let mut tokens: Vec<Token> = vec![];
 
     let mut src = source.as_bytes().to_vec();

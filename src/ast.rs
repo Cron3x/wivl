@@ -1,37 +1,26 @@
-enum NodeKind{
-    Program,
-    CallExpr,
-    BinaryExpr,
-    UnaryExpr,
-    NumericLiteral,
-    Indentifier,
-}
-
-pub enum Stmt {
-    Program{
-        kind: NodeKind,
-        body: Box<Stmt>
+pub enum Stmt{
+    Program {
+        body: Vec<Stmt>
     },
-    Expr(Expr),
-}
-
-enum Expr {
     BinaryExpr{
-        left: Box<Expr>,
-        right: Box<Expr>,
-        operator: String
+        left: Box<Stmt>,
+        right: Box<Stmt>,
+        operator: String, //Todo: Make to enume
     },
-    CallExpr,
-    UnaryExpr,
     NumericLiteral{
-        value: usize,
+        value: String,
     },
     Identifier{
-        symbol: String
+        symbol: String,
     },
 }
-
-struct BinaryExpr{
+impl std::fmt::Display for Stmt{
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result{
+        match self {
+            Self::Program{..} => write!(f, "Program"),
+            Self::BinaryExpr{..} => write!(f, "BinaryExpr"),
+            Self::NumericLiteral{..} => write!(f, "NumericLiteral"),
+            Self::Identifier{..} => write!(f, "Identifier"),
+        }
+    }
 }
-
-//TODO: Make everything return a value, if there is none than return nil
